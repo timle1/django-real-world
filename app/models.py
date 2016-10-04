@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import reverse
 
 # Create your models here.
 class Speaker(models.Model):
@@ -33,3 +34,6 @@ class Session(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('session-detail', kwargs={'pk': self.pk})
